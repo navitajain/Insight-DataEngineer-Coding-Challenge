@@ -20,13 +20,11 @@ Each line in the output file should list the following fields in the following o
 """
 
 # import libraries
-import unittest
 import sys
 import csv
 from datetime import datetime
 import warnings
 from collections import Counter
-import time
 
 
 class Product(object):
@@ -156,8 +154,6 @@ def write_output(output_list):
 
 if __name__ == '__main__':
 
-    start = time.time()
-
     # input file path
     try:
         COMPLAIN_INPUT_FILE = sys.argv[1]
@@ -189,21 +185,15 @@ if __name__ == '__main__':
         # add company to the Product attribute company_complain
         a.add_company(key, company)
 
-    print('Size of product dictionary:', sys.getsizeof(a.complain_dict))
     # sort and ordered dict of Product attribute company_complain
     a.sort_dict()
 
-    print('Size of sort keyy:', sys.getsizeof(a.sort_key))
-
     # generate stats
     output_list = a.generate_stats()
-    print('Outputlist:', sys.getsizeof(output_list))
 
     # write to output file
     write_output(output_list)
 
-    end = time.time()
-    print('Time to complete this code: ', end-start)
     print("Program completed successfully. Output written to file %s" % COMPLAIN_OUTPUT_FILE)
 
 
